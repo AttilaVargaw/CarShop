@@ -1,0 +1,96 @@
+    /*!
+ * Start Bootstrap - Shop Homepage (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+    
+    body {
+        padding-top: 120px;
+        background-color: #eceeef;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    
+    .slide-image {
+        width: 100%;
+    }
+    
+    .carousel-holder {
+        margin-bottom: 30px;
+    }
+    
+    .carousel-control,
+    .item {
+        border-radius: 4px;
+    }
+    
+    .caption {
+        height: 130px;
+        overflow: hidden;
+    }
+    
+    .caption h4 {
+        white-space: nowrap;
+    }
+    
+    .thumbnail img {
+        width: 100%;
+    }
+    
+    .ratings {
+        padding-right: 10px;
+        padding-left: 10px;
+        color: #d17581;
+    }
+    
+    .thumbnail {
+        padding: 0;
+    }
+    
+    .thumbnail .caption-full {
+        padding: 9px;
+        color: #333;
+    }
+    
+    footer {
+        margin: 50px 0;
+    }
+    
+    .carImg {
+        max-height: 128px!important;
+        /*max-width: 386px!important;*/
+        align-content: center;
+    }
+    
+    .card {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        background-color: #fff;
+    }
+    
+    .searchForm {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        padding: 20px;
+        background-color: #fff;
+    }
+    
+    .navbar {
+        background-color: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)
+    }
+    
+    th {
+        padding: 0.75rem;
+    }
+    
+    html {
+        font-size: 16px;
+    }
+    
+    .descriptionBox {
+        padding: 5px;
+        background-color: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)
+    }
+    
+    .descriptionTable {
+        width: 100%;
+    }

@@ -1,0 +1,42 @@
+include includes/head.pug
+include includes/menu.pug
+
+.container
+    .row
+        .col-md-3
+            p.lead CarShop
+            include includes/searchForm.pug
+        .col-md-9
+            .row.carousel-holder
+                .col-md-12
+                    #carousel-example-generic.carousel.slide(data-ride='carousel')
+                        ol.carousel-indicators
+                            li.active(data-slide-to='0', data-target='#carousel-example-generic')
+                            li(data-slide-to='1', data-target='#carousel-example-generic')
+                            li(data-slide-to='2', data-target='#carousel-example-generic')
+                        .carousel-inner
+                            .item.active
+                                img.carouselImg.slide-image(src=car.imgUrl, alt='')
+                            .item
+                                img.carouselImg.slide-image(src=car.imgUrl, alt='')
+                            .item
+                                img.carouselImg.slide-image(src=car.imgUrl, alt='')
+                        a.left.carousel-control(data-slide='prev', href='#carousel-example-generic')
+                            span.glyphicon.glyphicon-chevron-left
+                        a.right.carousel-control(data-slide='next', href='#carousel-example-generic')
+                            span.glyphicon.glyphicon-chevron-right
+            .row.descriptionBox
+                h1 Az autó részletei
+                table.table-responsive.table-striped.table-hover.descriptionTable
+                    tbody
+                        tr
+                            th Márka:
+                            td #{car.mark}
+                        tr
+                            th Tipus: 
+                            td #{car.type}
+                        tr
+                            th Leírás
+                            td #{car.desc}
+
+include includes/foot.pug

@@ -1,0 +1,53 @@
+include includes/head.pug
+include includes/menu.pug
+
+.container
+	.row
+		.col-md-3
+			p.lead CarShop
+			include includes/searchForm.pug
+		.col-md-9
+			.row.carousel-holder
+				.col-md-12
+					#carousel-example-generic.carousel.slide(data-ride='carousel')
+						ol.carousel-indicators
+							li.active(data-slide-to='0', data-target='#carousel-example-generic')
+							li(data-slide-to='1', data-target='#carousel-example-generic')
+							li(data-slide-to='2', data-target='#carousel-example-generic')
+						.carousel-inner
+							.item.active
+								img.carouselImg.slide-image(src='http://www.eschervictoria.com/wp-content/uploads/2014/06/ESR-building-exterior.jpg', alt='')
+							.item
+								img.carouselImg.slide-image(src='http://www.eschervictoria.com/wp-content/uploads/2014/06/ESR-building-exterior.jpg', alt='')
+							.item
+								img.carouselImg.slide-image(src='http://www.eschervictoria.com/wp-content/uploads/2014/06/ESR-building-exterior.jpg', alt='')
+						a.left.carousel-control(data-slide='prev', href='#carousel-example-generic')
+							span.glyphicon.glyphicon-chevron-left
+						a.right.carousel-control(data-slide='next', href='#carousel-example-generic')
+							span.glyphicon.glyphicon-chevron-right
+			.row
+				for it in cars 
+					.col-sm-6
+						.card
+							img.carImg.card-img-top(src=it.imgUrl, alt='')
+							.card-block
+								h4.card-title 
+									a(href="/details?id=" + it.id) Megtekintés
+								h6.card-subtitle.mb-2.text-muted Állapot: #{it.state}
+								h6.card-subtitle.mb-2.text-mute Ára #{it.price} Ft
+								p.card-text #{it.desc}
+.container.text-center
+	nav(aria-label="Page navigation example")
+				ul.pagination
+					li.page-item
+						a.page-link(href="#") < Previous
+					li.page-item
+						a.page-link(href="#") 1
+					li.page-item
+						a.page-link(href="#") 2
+					li.page-item
+						a.page-link(href="#") 3
+					li.page-item
+						a(href="#") Next >
+
+include includes/foot.pug
