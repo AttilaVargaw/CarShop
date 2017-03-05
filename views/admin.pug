@@ -1,0 +1,45 @@
+include includes/head.pug
+include includes/menu.pug
+.container
+	.panel.panel-default
+		.panel-heading Új autó hozzáadása
+		.panel-body
+			.panel.panel-default
+				.panel-heading Képek
+				.panel.body
+					div
+						img#carImage.cropImage(src="images/test.jpg")
+					div 
+						label.btn.btn-default(for="fileUpload") Fájl betöltése
+						input(id="fileUpload" type="file" accept="image/*" value="Fájl" onchange="previewFile()" style="display: none")
+						button.btn.btn-default(onclick="addPreviewFile()") Hozzáadás
+				.panel-body
+					#imageContainer
+
+			.form-group
+				label(for='mark') Márka
+				select#mark.form-control
+					for it in marks
+						option #{it}
+			.form-group
+				label(for=age) Kor (Év)
+				input.form-control#age(type="number" value="0" min="0")
+			.form-group
+				label(for=age) Ár (Ft)
+				span.ft
+					input.form-control#price(type="number" value="0" min="0")
+			.form-group
+				label(for="desc") Leírás
+				textarea.form-control#desc(rows="5")
+			input.btn.btn-default(value="Hozzáadás")
+	.panel.panel-default
+		.panel-heading Új márka hozzáadaása
+		.panel-body
+			.form-group
+				label(for="mark-name") Név
+				input.form-control#mark-name()
+			input.btn.btn-default(value="Hozzáadás")
+
+	script(src="javascripts/admin.js")
+
+include includes/foot.pug

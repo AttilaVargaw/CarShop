@@ -27,15 +27,33 @@ include includes/menu.pug
 							span.glyphicon.glyphicon-chevron-right
 			.row
 				for it in cars 
-					.col-sm-6
-						.card
-							img.carImg.card-img-top(src=it.imgUrl, alt='')
-							.card-block
-								h4.card-title 
-									a(href="/details?id=" + it.id) Megtekintés
-								h6.card-subtitle.mb-2.text-muted Állapot: #{it.state}
-								h6.card-subtitle.mb-2.text-mute Ára #{it.price} Ft
-								p.card-text #{it.desc}
+					.panel.panel-default
+						.panel-bod
+								table.table-responsive.table-striped.table-hover.descriptionTable
+									tbody
+										tr
+											th(style="width: 384px")
+												img.img-rounded.carImg.card-img-top(src=it.imgUrl, alt='')
+											td
+													table
+														tbody
+															tr
+																th
+																td 
+																	h4
+																		a(href="/details?id=" + it.id) Megtekintés
+															tr
+																th Tipus:
+																td #{it.mark} #{it.type}
+															tr
+																th Állapot:
+																td #{it.state}
+															tr
+																th Ára:
+																td #{it.price} Ft
+															tr
+																th Rövid leírás:
+																td #{it.desc}
 .container.text-center
 	nav(aria-label="Page navigation example")
 				ul.pagination

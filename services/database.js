@@ -49,6 +49,26 @@ class Dummydb {
     GetCarNumber() {
         return this.cars.length;
     }
+
+    GetMarks() {
+        return _.chain(this.cars).map("mark").uniq().value();
+    }
+
+    GetCarsByAgeInterval(age1, age2) {
+        return _.filter(this.cars, function(e) {
+            return e.age < age2 && e.age > age1;
+        });
+    }
+
+    GetCarsByPriceInterval(price1, price2) {
+        return _.filter(this.cars, function(e) {
+            return e.age < price2 && e.age > price1;
+        });
+    }
+
+    GetCarsFilterBy(filter) {
+        return _.filter(this.cars, filter);
+    }
 }
 
 module.exports = Dummydb;

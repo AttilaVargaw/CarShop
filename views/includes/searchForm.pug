@@ -1,27 +1,30 @@
-form.form.searchForm
-    label(for="mark") Márka
-    br
-    select.custom-select.mb-4.mr-sm-4.mb-sm-0(id="mark")
-        option(selected) Válasszon...
-        option(value="1") One
-        option(value="2") Two
-        option(value="3") Three
-    br
-    label.mr-sm-2(for="price") Ár tartomány
-    br
-    select.custom-select.mb-4.mr-sm-4.mb-sm-0(id="price")
-        option(selected) Válasszon...
-        option(value="1") One
-        option(value="2") Two
-        option(value="3") Three
-    br
-    label.mr-sm-2(for="state") Állapot
-    br
-    select.custom-select.mb-4.mr-sm-4.mb-sm-0(id="state")
-        option(selected) Válasszon...
-        option(value="1") One
-        option(value="2") Two
-        option(value="3") Three
-    br
-    br
-    input(type="submit" value="Keres" action="/" method="GET")
+form.form
+	.panel.panel-default
+		.panel-heading Keresés
+		.panel-body
+			label(for="mark") Márka
+			br
+			select.custom-select.mb-4.mr-sm-4.mb-sm-0(id="mark")
+				option(selected) Válasszon...
+				option(value="1") One
+				option(value="2") Two
+				option(value="3") Three
+			br
+			label.mr-sm-2(for="price") Ár tartomány
+			br
+			select.custom-select.mb-4.mr-sm-4.mb-sm-0(id="price")
+				option(selected) Válasszon...
+				option(value="1") One
+				option(value="2") Two
+				option(value="3") Three
+			br
+			label.mr-sm-2(for="state") Állapot
+			br
+			select.custom-select.mb-4.mr-sm-4.mb-sm-0(id="state")
+				option(selected) Válasszon...
+				option(value="1") One
+				option(value="2") Two
+				option(value="3") Three
+			br
+			br
+			input(type="submit" value="Keres" action="/" method="GET")

@@ -10,3 +10,16 @@ a {
 .carImg {
     height: 128;
 }
+
+.cropImage {
+    max-width: 100%;
+}
+
+img {
+    max-width: 100%
+}
+
+.prevImage {
+    width: 400px;
+    height: 300px;
+}
