@@ -1,4 +1,5 @@
 let _ = require("lodash");
+let mongoClient = require("mongodb")
 
 class Car {
     constructor(mark, type, age, desc, price, state, imgUrl, id) {
@@ -71,4 +72,104 @@ class Dummydb {
     }
 }
 
-module.exports = Dummydb;
+class DB {
+    constructor() {}
+
+    GetCars(page) {
+        return new Promise((resolve, reject) => {
+            this.Connect().then((db) =>
+                resolve(db.collection("Cars").find({}).toArray()));
+        });
+    };
+
+    GetCarById(id) {
+        return new Promise((resolve, reject) => {
+            this.Connect().then((db) =>
+                resolve(db.collection("Cars").find({
+                    id: id
+                })));
+        });
+    }
+
+    GetCarNumber() {
+        return new Promise((resolve, reject) => {
+            this.Connect().then((db) =>
+                resolve(db.collection("Cars").length));
+        });
+    }
+
+
+    GetMarks() {
+        return new Promise((resolve, reject) => {
+            this.Connect().then((db) => {
+                db.collection("Marks").find();
+            });
+        });
+    }
+
+    GetCarsByAgeInterval(age1, age2) {
+        this.Connect().then((db) => {
+            return new Promise((resolve, reject) => {
+                db.collection("Cars").find({
+                    age: {
+                        $lte: age1,
+                        $gte: age2
+                    }
+                })
+            });
+        });
+    }
+
+    GetCarsByPriceInterval(price1, price2) {
+        return new Promise((resolve, reject) => {
+            this.Connect().then((db) => {
+                db.collection("Cars").find({
+                    age: {
+                        $lte: age1,
+                        $gte: age2
+                    }
+                })
+            })
+        });
+    }
+
+    Connect() {
+        return new Promise((resolve, reject) => {
+            mongoClient.connect("mongodb://127.0.0.1:27017", (err, db) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(db);
+                }
+            });
+        });
+    }
+
+    GetMarks() {
+        return new Promise((resolve, reject) => {
+            this.Connect().then((db) => {
+                resolve(db.collection("Marks").find({}).toArray());
+            }, (err) => {
+                reject(err);
+            });
+        });
+    }
+
+    SaveMarks(mark) {
+        return new Promise((resolve, reject) => {
+            this.Connect().then((db) => {
+                db.collection("Marks").save(mark, (err, promise) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve();
+                    }
+                });
+            }, (err) => {
+                reject(err);
+            });
+        });
+    }
+}
+
+module.exports = DB;

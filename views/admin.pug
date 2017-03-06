@@ -15,30 +15,31 @@ include includes/menu.pug
 						button.btn.btn-default(onclick="addPreviewFile()") Hozzáadás
 				.panel-body
 					#imageContainer
-
-			.form-group
-				label(for='mark') Márka
-				select#mark.form-control
-					for it in marks
-						option #{it}
-			.form-group
-				label(for=age) Kor (Év)
-				input.form-control#age(type="number" value="0" min="0")
-			.form-group
-				label(for=age) Ár (Ft)
-				span.ft
-					input.form-control#price(type="number" value="0" min="0")
-			.form-group
-				label(for="desc") Leírás
-				textarea.form-control#desc(rows="5")
-			input.btn.btn-default(value="Hozzáadás")
+			form#carForm
+				.form-group
+					label(for='mark') Márka
+					select#mark.form-control(name="mark")
+						for it in marks
+							option #{it.name}
+				.form-group
+					label(for=age) Kor (Év)
+					input.form-control#age(name="age" type="number" value="0" min="0")
+				.form-group
+					label(for=age) Ár (Ft)
+					span.ft
+						input.form-control#price(name="price" type="number" value="0" min="0")
+				.form-group
+					label(for="desc") Leírás
+					textarea.form-control#desc(name="desc" rows="5")
+				button.btn.btn-default(onclick="postNewCar()") Hozzáadás 
 	.panel.panel-default
 		.panel-heading Új márka hozzáadaása
 		.panel-body
-			.form-group
-				label(for="mark-name") Név
-				input.form-control#mark-name()
-			input.btn.btn-default(value="Hozzáadás")
+			form#markForm
+				.form-group
+					label(for="mark-name") Név
+					input.form-control#mark-name(name="name")
+				button.btn.btn-default(onclick="postNewMark()") Hozzáadás
 
 	script(src="javascripts/admin.js")
 

@@ -11,9 +11,16 @@ class Model {
 router.get("/", function(req, res, next) {
     let db = new Dummydb();
 
-    let model = new Model(db.GetCars(req.query.page || 0));
+    let model = db.GetCars(req.query.page || 0).then((data) => {
+        let model = new Model(data);
+        res.render("index", model);
+    }, () => {
+        res.render("error", {
+            errorMsg: "",
+            errorMsgStatus: 500
+        });
+    });
 
-    res.render("index", model);
 });
 
 module.exports = router;

@@ -9,12 +9,28 @@ class Model {
     }
 }
 
+router.post("/addMark", function(req, res, next) {
+    res.statusCode = 202;
+
+    let db = new DummyDB().SaveMarks(req.body);
+
+    res.end();
+});
+
+router.post("/addMark", function(req, res, next) {
+    res.statusCode(202).end();
+});
+
 router.get("/", function(req, res, next) {
     let db = new DummyDB();
 
-    let model = new Model(db.GetMarks());
-
-    res.render("admin", model);
+    db.GetMarks().then((data) => {
+        let model = new Model(data);
+        res.render("admin", model);
+    }, (err) => {
+        res.status = 500;
+        res.end();
+    });
 });
 
 module.exports = router;

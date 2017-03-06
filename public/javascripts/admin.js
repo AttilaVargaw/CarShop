@@ -49,4 +49,26 @@
 
         $("#imageContainer")[0].append(card[0]);
     };
+
+    window.postNewCar = function() {
+        event.preventDefault();
+        var body = {};
+
+        $("#carForm").find("input,textarea,select").each(function(i, field) {
+            body[field.name] = field.value;
+        });
+
+        $.post("/admin/addNewCar", body);
+    };
+
+    window.postNewMark = function() {
+        event.preventDefault();
+        var body = {};
+
+        $("#markForm").find("input").each(function(i, field) {
+            body[field.name] = field.value;
+        });
+
+        $.post("admin/addMark", body);
+    }
 })();
