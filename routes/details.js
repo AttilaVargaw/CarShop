@@ -1,6 +1,6 @@
-var express = require("express");
-var router = express.Router();
-let Dummydb = require("../services/database");
+const express = require("express");
+const router = express.Router();
+const Dummydb = require("../services/database");
 
 class Model {
     constructor(car) {
@@ -10,7 +10,6 @@ class Model {
 
 router.get("/", function(req, res, next) {
     let db = new Dummydb();
-    db.CreateRandom();
 
     if (!req.query.id) {
         res.render("error", {
@@ -19,18 +18,20 @@ router.get("/", function(req, res, next) {
         });
         return;
     }
-    let car = db.GetCarById(req.query.id);
 
-    if (car) {
-        let model = new Model(car);
-        res.render("details.pug", model);
-    } else {
+    db.GetCarById(req.query.id).then((car) => {
+        if (car) {
+            let model = new Model(car);
+            res.render("details.pug", model);
+        } else {
+            return Promise.fail();
+        }
+    }).catch((error) => {
         res.render("error", {
             errMsg: "Az autó nem található",
             errStatus: 500
         });
-    }
-
+    });
 });
 
 module.exports = router;

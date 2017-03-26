@@ -3,7 +3,9 @@
         "browser": true,
         "commonjs": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "jasmine": true,
+        "jquery": true
     },
     "parserOptions": {
         "ecmaFeatures": {
@@ -11,6 +13,10 @@
         },
         "sourceType": "module"
     },
+    "plugins": [
+        "jasmine"
+    ],
+    "extends": "plugin:jasmine/recommended",
     "rules": {
         "no-const-assign": "warn",
         "no-this-before-super": "warn",
@@ -20,6 +26,5 @@
         "constructor-super": "warn",
         "valid-typeof": "warn",
         "comma-style": "warn"
-
     }
 }

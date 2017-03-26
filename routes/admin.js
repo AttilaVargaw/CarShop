@@ -1,36 +1,54 @@
-var express = require("express");
-let DummyDB = require("../services/database");
-let _ = require("lodash");
-var router = express.Router();
+const express = require("express");
+const DummyDB = require("../services/database");
+const _ = require("lodash");
+const router = express.Router();
 
-class Model {
-    constructor(marks) {
-        this.marks = marks;
+class FilterType {
+    constructor(selections, name) {
+        this.selections = selections;
+        this.name = name;
     }
 }
 
-router.post("/addMark", function(req, res, next) {
-    res.statusCode = 202;
+class Model {
+    constructor(marks, filters) {
+        this.marks = marks;
+        this.filters = filter;
+    }
+}
 
-    let db = new DummyDB().SaveMarks(req.body);
-
-    res.end();
+router.post("/mark", function(req, res, next) {
+    new DummyDB().SaveMarks(req.body).then(() => {
+        res.sendStatus(201);
+    }, function() {
+        res.sendStatus(500);
+    });
 });
 
-router.post("/addMark", function(req, res, next) {
-    res.statusCode(202).end();
+router.post("/car", function(req, res, next) {
+    new DummyDB().SaveCar(req.body).then(() => {
+        res.sendStatus(201);
+    }, () => {
+        res.sendStatus(500);
+    });
 });
 
 router.get("/", function(req, res, next) {
-    let db = new DummyDB();
+    const db = new DummyDB();
 
-    db.GetMarks().then((data) => {
-        let model = new Model(data);
+    Promise.all([
+
+    ]).then((data) => {
+        let model = new Model(data, [
+            new FilterType()
+        ]);
         res.render("admin", model);
     }, (err) => {
         res.status = 500;
         res.end();
     });
+
+    //    Promise.all(db.GetMarks(), db.GetCarsByPriceInterval(), db.)
 });
 
 module.exports = router;

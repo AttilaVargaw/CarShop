@@ -26,46 +26,53 @@ include includes/menu.pug
 						a.right.carousel-control(data-slide='next', href='#carousel-example-generic')
 							span.glyphicon.glyphicon-chevron-right
 			.row
-				for it in cars 
+				if cars.length > 0
+					for it in cars 
+						.panel.panel-default
+							.panel-body
+									table.table-responsive.table-striped.table-hover.descriptionTable
+										tbody
+											tr
+												th(style="width: 384px")
+													img.img-rounded.carImg.card-img-top(src=it.imgUrl, alt='')
+												td
+														table
+															tbody
+																tr
+																	th
+																	td 
+																		h4
+																			a(href="/details?id=" + it.id) Megtekintés
+																tr
+																	th Tipus:
+																	td #{it.mark} #{it.type}
+																tr
+																	th Állapot:
+																	td #{it.state}
+																tr
+																	th Ára:
+																	td #{it.price} Ft
+																tr
+																	th Rövid leírás:
+																	td #{it.desc}
+				else 
 					.panel.panel-default
-						.panel-bod
-								table.table-responsive.table-striped.table-hover.descriptionTable
-									tbody
-										tr
-											th(style="width: 384px")
-												img.img-rounded.carImg.card-img-top(src=it.imgUrl, alt='')
-											td
-													table
-														tbody
-															tr
-																th
-																td 
-																	h4
-																		a(href="/details?id=" + it.id) Megtekintés
-															tr
-																th Tipus:
-																td #{it.mark} #{it.type}
-															tr
-																th Állapot:
-																td #{it.state}
-															tr
-																th Ára:
-																td #{it.price} Ft
-															tr
-																th Rövid leírás:
-																td #{it.desc}
+						.panel-body
+							h1 Nem található eredmény!
 .container.text-center
-	nav(aria-label="Page navigation example")
+	nav(aria-label="Pagination")
+		if cars.length > 0
 				ul.pagination
+					if page !== 0
+						li.page-item
+							a.page-link(onclick="window.search(event," + (page - 1) + ")")
+								span.glyphicon.glyphicon-arrow-left(aria-hidden="true") 
+								|  Előző
 					li.page-item
-						a.page-link(href="#") < Previous
-					li.page-item
-						a.page-link(href="#") 1
-					li.page-item
-						a.page-link(href="#") 2
-					li.page-item
-						a.page-link(href="#") 3
-					li.page-item
-						a(href="#") Next >
+						a.page-link() #{page}
+					if isNext
+						li.page-item
+							a.page-link(onclick="window.search(event," + (page + 1) + ")") Következő 
+								span.glyphicon.glyphicon-arrow-right(aria-hidden="true")
 
 include includes/foot.pug

@@ -27,20 +27,23 @@
         } else {
             preview.src = "";
         }
+
     };
 
     window.onload = function() {
-        window.previewFile();
+        if ($('#carImage').length > 0) {
+            window.previewFile();
 
-        cropper = new Cropper($('#carImage')[0], {
-            aspectRatio: 4 / 3,
-            crop: function(e) {
+            cropper = new Cropper($('#carImage')[0], {
+                aspectRatio: 4 / 3,
+                crop: function(e) {
 
-            },
-            viewMode: 1,
-            zoomable: false,
-            rotatable: false
-        })
+                },
+                viewMode: 1,
+                zoomable: false,
+                rotatable: false
+            });
+        }
     };
 
     window.addPreviewFile = function() {
@@ -58,7 +61,7 @@
             body[field.name] = field.value;
         });
 
-        $.post("/admin/addNewCar", body);
+        $.post("/data/car", body);
     };
 
     window.postNewMark = function() {
@@ -69,6 +72,6 @@
             body[field.name] = field.value;
         });
 
-        $.post("admin/addMark", body);
+        $.post("data/mark", body);
     }
 })();

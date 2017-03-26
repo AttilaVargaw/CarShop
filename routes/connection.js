@@ -1,6 +1,6 @@
-var express = require("express");
-let _ = require("lodash");
-var router = express.Router();
+const express = require("express");
+const _ = require("lodash");
+const router = express.Router();
 
 class Model {
 

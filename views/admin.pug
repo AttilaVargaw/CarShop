@@ -41,6 +41,32 @@ include includes/menu.pug
 					input.form-control#mark-name(name="name")
 				button.btn.btn-default(onclick="postNewMark()") Hozzáadás
 
+	.panel.panel-default
+		.panel-heading Új állapot hozzáadaása
+		.panel-body
+			form#markForm
+				.form-group
+					label(for="mark-name") Név
+					input.form-control#mark-name(name="name")
+				button.btn.btn-default(onclick="postNewMark()") Hozzáadás
+
+	.panel.panel-default
+		.panel-heading Állapot Törlése
+		.panel-body
+			for it in states
+				label(for="mark-name") Név
+				input.form-control#mark-name(name="name")
+				button.btn.btn-default(onclick="postNewMark()") Törlés
+
+for it in filters 
+	.panel.panel-default
+		.panel-heading #{it.name}
+		.panel-body
+			form(id=it.name)
+			label(for=it.name + "label") #{it.name}
+			input.form-control
+			button.btn.btn-default(onclick="addNewFilter(" + it.name + ")")
+
 	script(src="javascripts/admin.js")
 
 include includes/foot.pug
